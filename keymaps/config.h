@@ -20,15 +20,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "config_common.h"
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID 0xFEED
-#define PRODUCT_ID 0x0000
+#define VENDOR_ID 0xE1E1 // MKBD
+#define PRODUCT_ID 0x0000 
 #define DEVICE_VER 0x0001
 #define MANUFACTURER MKBD
 #define PRODUCT MKBC109
 
 /* key matrix size */
-#define MATRIX_ROWS 14
-#define MATRIX_COLS 31
+#define MATRIX_ROWS 5
+#define MATRIX_COLS 12
 
 /*
  * Keyboard Matrix Assignments
@@ -53,7 +53,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* COL2ROW, ROW2COL */
 #define DIODE_DIRECTION COL2ROW
 
-#define ENCODERS_PAD_A \
+/*#define ENCODERS_PAD_A \
     {                  \
         B2             \
     }
@@ -61,13 +61,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     {                  \
         B3             \
     }
+*/
 
-#define BACKLIGHT_PIN B7
-#define BACKLIGHT_BREATHING
-#define BACKLIGHT_LEVELS 4
+// #define BACKLIGHT_PIN B7
+// #define BACKLIGHT_BREATHING
+// #define BACKLIGHT_LEVELS 4
 
-#define RGB_DI_PIN E2
-#define DRIVER_LED_TOTAL 31
+#define RGB_DI_PIN PC7
+
+#ifdef RGB_DI_PIN
+#define RGBLED_NUM 6
+#define RGBLIGHT_HUE_STEP 8
+#define RGBLIGHT_SAT_STEP 8
+#define RGBLIGHT_VAL_STEP 8
+#define RGBLIGHT_LIMIT_VAL 255 /* The maximum brightness level */
+#define RGBLIGHT_SLEEP         /* If defined, the RGB lighting will be switched off when the host goes to sleep */
+#define RGBLIGHT_ANIMATIONS
+#endif
+
+#define DRIVER_LED_TOTAL 60
 // RGB Matrix Animation modes. Explicitly enabled
 // For full list of effects, see:
 // https://docs.qmk.fm/#/feature_rgb_matrix?id=rgb-matrix-effects
